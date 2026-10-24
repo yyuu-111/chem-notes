@@ -213,7 +213,168 @@
     body { background: #fff; font-size: 12px; }
     .card { box-shadow: none; break-inside: avoid; }
   }
+  /* ================= 新增：主题变量 / 自测模式 / 错题本 ================= */
+  :root {
+    --app-soft: #f8fafc;
+    --app-hover: #f0fdfa;
+    --app-th: #f0fdfa;
+    --app-row-alt: #fbfdfd;
+    --app-known: #fef9c3;
+    --app-tip-bg: #f0fdf4; --app-tip-line: #bbf7d0; --app-tip-ink: #14532d;
+    --app-warn-bg: #fffbeb; --app-warn-line: #fde68a; --app-warn-ink: #78350f;
+    --app-err-bg: #fef2f2; --app-err-line: #fecaca; --app-err-ink: #991b1b;
+    --app-chip-bg: #f0fdfa; --app-chip-line: #99f6e4; --app-chip-ink: #115e59;
+    --app-input-bg: #ffffff; --app-input-line: #cbd5e1;
+    --app-opt-bg: #ffffff; --app-opt-line: #e2e8f0;
+    --app-shadow: 0 1px 3px rgba(15, 23, 42, .05);
+  }
+  /* 顶栏主题切换按钮 */
+  .theme-btn {
+    background: rgba(255, 255, 255, .16);
+    border: 1px solid rgba(255, 255, 255, .38);
+    color: #fff; border-radius: 9px;
+    width: 36px; height: 30px; font-size: 15px; line-height: 1;
+    cursor: pointer; display: inline-flex; align-items: center; justify-content: center;
+    transition: background .15s;
+  }
+  .theme-btn:hover { background: rgba(255, 255, 255, .3); }
+  /* 导航角标 */
+  .nav-badge {
+    display: inline-block; min-width: 18px; padding: 0 5px; margin-left: 6px;
+    background: var(--bad); color: #fff; border-radius: 999px;
+    font-size: 11px; line-height: 17px; text-align: center; vertical-align: 1px;
+  }
+  .nav-badge[data-zero="1"] { display: none; }
+  /* 自测模式 */
+  .quiz-top { display: flex; flex-wrap: wrap; gap: 14px; justify-content: space-between; align-items: flex-end; }
+  .quiz-stats { display: flex; flex-wrap: wrap; gap: 14px; font-size: 13.5px; color: var(--muted); }
+  .quiz-stats b { color: var(--primary-dark); font-size: 16px; }
+  .quiz-question {
+    background: var(--app-soft); border: 1px solid var(--line); border-radius: 12px;
+    padding: 14px 16px; margin: 14px 0;
+  }
+  .quiz-type { font-size: 12px; color: var(--primary-dark); font-weight: 700; letter-spacing: .3px; }
+  .quiz-eq {
+    font-family: "Cambria Math", "Times New Roman", serif; font-size: 1.15rem;
+    margin: 6px 0; overflow-wrap: anywhere; line-height: 1.9;
+  }
+  .quiz-ask { font-size: 15px; margin-top: 4px; }
+  .quiz-opts { display: grid; gap: 10px; margin: 12px 0; }
+  .quiz-opt {
+    text-align: left; background: var(--app-opt-bg); border: 1.5px solid var(--app-opt-line);
+    border-radius: 10px; padding: 10px 14px; cursor: pointer; font-size: 15px;
+    font-family: "Cambria Math", "Times New Roman", serif; color: var(--ink);
+    transition: border-color .12s, background .12s;
+  }
+  .quiz-opt:hover { border-color: var(--primary); }
+  .quiz-opt.picked { border-color: var(--primary); background: var(--app-hover); }
+  .quiz-opt.correct { border-color: #16a34a; background: rgba(34, 197, 94, .16); }
+  .quiz-opt.wrong { border-color: #dc2626; background: rgba(239, 68, 68, .16); }
+  .quiz-opt[disabled] { cursor: default; }
+  .quiz-coef-input { width: 120px; }
+  .feedback { border-radius: 10px; padding: 12px 14px; margin: 12px 0; font-size: 14.5px; }
+  .feedback.ok-fb { background: var(--app-tip-bg); border: 1px solid var(--app-tip-line); color: var(--app-tip-ink); }
+  .feedback.bad-fb { background: var(--app-err-bg); border: 1px solid var(--app-err-line); color: var(--app-err-ink); }
+  .feedback .ans { font-family: "Cambria Math", "Times New Roman", serif; font-size: 1.1rem; margin-top: 4px; }
+  /* 错题本 */
+  .mistake-item {
+    border: 1px solid var(--line); border-left: 4px solid var(--bad);
+    border-radius: 10px; padding: 12px 14px; margin: 10px 0; background: var(--app-soft);
+  }
+  .mistake-head { display: flex; flex-wrap: wrap; gap: 10px; align-items: baseline; font-size: 12.5px; color: var(--muted); }
+  .mistake-name { font-weight: 700; color: var(--primary-dark); font-size: 13.5px; }
+  .mistake-eq { font-family: Consolas, "Courier New", monospace; font-size: 13.5px; margin: 6px 0; word-break: break-all; }
+  .mistake-row { font-size: 13.5px; margin: 2px 0; word-break: break-word; }
+  .empty-state { text-align: center; color: var(--muted); padding: 26px 10px; font-size: 14px; line-height: 1.9; }
+  /* ===== 暗色模式 ===== */
+  html[data-theme="dark"] {
+    --bg: #0b1220;
+    --card: #121b2b;
+    --ink: #e8eef7;
+    --muted: #93a7c0;
+    --line: #24344a;
+    --primary: #2dd4bf;
+    --primary-dark: #7ee0d4;
+    --primary-light: #123736;
+    --accent: #fb923c;
+    --good: #4ade80;
+    --bad: #f87171;
+    --app-soft: #16233a;
+    --app-hover: #12312f;
+    --app-th: #102b2b;
+    --app-row-alt: #141f31;
+    --app-known: #3a3418;
+    --app-tip-bg: #0f2620; --app-tip-line: #1c5540; --app-tip-ink: #86efac;
+    --app-warn-bg: #2a2213; --app-warn-line: #6b5320; --app-warn-ink: #fcd34d;
+    --app-err-bg: #2a151b; --app-err-line: #7f2b3a; --app-err-ink: #fca5a5;
+    --app-chip-bg: #102a2b; --app-chip-line: #175e5e; --app-chip-ink: #99f6e4;
+    --app-input-bg: #0e1729; --app-input-line: #2b3c55;
+    --app-opt-bg: #16233a; --app-opt-line: #2b3c55;
+    --app-shadow: 0 1px 3px rgba(0, 0, 0, .5);
+  }
+  html[data-theme="dark"] body { background: var(--bg); color: var(--ink); }
+  html[data-theme="dark"] .topbar { background: linear-gradient(90deg, #0a3d3a 0%, #0b5250 55%, #0d6b66 100%); box-shadow: 0 2px 10px rgba(0, 0, 0, .5); }
+  html[data-theme="dark"] .topbar .quick a { border-color: rgba(255, 255, 255, .32); }
+  html[data-theme="dark"] #menuBtn { background: rgba(255, 255, 255, .12); }
+  html[data-theme="dark"] .sidebar { background: var(--card); border-right-color: var(--line); }
+  html[data-theme="dark"] .nav-group-title { color: #7d90a8; }
+  html[data-theme="dark"] .nav-link { color: #cbd8e8; }
+  html[data-theme="dark"] .nav-link:hover { background: var(--app-hover); color: #99f6e4; }
+  html[data-theme="dark"] .nav-link.active { background: var(--primary-light); color: #99f6e4; }
+  html[data-theme="dark"] h2.sec-title .num { background: #0f766e; }
+  html[data-theme="dark"] h4 { color: #dbe7f5; }
+  html[data-theme="dark"] .card { background: var(--card); border-color: var(--line); box-shadow: var(--app-shadow); }
+  html[data-theme="dark"] .formula { background: var(--app-soft); }
+  html[data-theme="dark"] .tbl th { background: var(--app-th); color: var(--primary-dark); }
+  html[data-theme="dark"] .tbl tr:nth-child(even) td { background: var(--app-row-alt); }
+  html[data-theme="dark"] .tbl tr.known td { background: var(--app-known); }
+  html[data-theme="dark"] .tag.t-he { background: #16305c; color: #93c5fd; }
+  html[data-theme="dark"] .tag.t-fen { background: #3a1b2b; color: #f9a8d4; }
+  html[data-theme="dark"] .tag.t-zhi { background: #123222; color: #86efac; }
+  html[data-theme="dark"] .tag.t-fu { background: #3a2c12; color: #fcd34d; }
+  html[data-theme="dark"] .tag.t-hong { background: #3a1a1a; color: #fca5a5; }
+  html[data-theme="dark"] .tag.t-other { background: #24344a; color: #cbd5e1; }
+  html[data-theme="dark"] .tip { background: var(--app-tip-bg); border-color: var(--app-tip-line); color: var(--app-tip-ink); }
+  html[data-theme="dark"] .warn { background: var(--app-warn-bg); border-color: var(--app-warn-line); color: var(--app-warn-ink); }
+  html[data-theme="dark"] .err { background: var(--app-err-bg); border-color: var(--app-err-line); color: var(--app-err-ink); }
+  html[data-theme="dark"] input[type="text"],
+  html[data-theme="dark"] input[type="number"] { background: var(--app-input-bg); border-color: var(--app-input-line); color: var(--ink); }
+  html[data-theme="dark"] select { background: var(--app-input-bg) !important; border-color: var(--app-input-line) !important; color: var(--ink); }
+  html[data-theme="dark"] option { background: #0e1729; color: #e8eef7; }
+  html[data-theme="dark"] .chip { background: var(--app-chip-bg); border-color: var(--app-chip-line); color: var(--app-chip-ink); }
+  html[data-theme="dark"] .chip:hover { background: #17403f; }
+  html[data-theme="dark"] .eq-result { background: #0f2727; }
+  html[data-theme="dark"] .bank-item { background: var(--card); border-color: var(--line); }
+  html[data-theme="dark"] .bank-eq { background: var(--app-soft); }
+  html[data-theme="dark"] .hero { background: linear-gradient(135deg, #0a3d3a 0%, #0b4f4a 45%, #0d6b66 100%); box-shadow: 0 8px 24px rgba(0, 0, 0, .45); }
+  html[data-theme="dark"] .hero-btns a { background: #0e2b2a; color: #99f6e4; }
+  html[data-theme="dark"] .btn { background: #0f766e; }
+  html[data-theme="dark"] .btn:hover { background: #0d9488; }
+  html[data-theme="dark"] .btn-accent { background: #c2410c; }
+  html[data-theme="dark"] .btn-accent:hover { background: #ea580c; }
+  html[data-theme="dark"] #backTop { background: #0f766e; }
+  html[data-theme="dark"] .feedback.bad-fb { color: #fca5a5; }
+  html[data-theme="dark"] .quiz-opt.correct { background: rgba(34, 197, 94, .18); }
+  html[data-theme="dark"] .quiz-opt.wrong { background: rgba(239, 68, 68, .18); }
+  @media print {
+    html[data-theme="dark"] { --bg: #fff; --card: #fff; --ink: #000; --muted: #555; --line: #ccc; --app-soft: #f7fafc; --app-row-alt: #fff; --app-th: #f7fafc; --app-input-bg: #fff; --app-opt-bg: #fff; }
+    html[data-theme="dark"] body { color: #000; }
+    .quiz-opt, .feedback, .mistake-item { break-inside: avoid; }
+  }
 </style>
+<script>
+  /* 在首屏渲染前应用主题，避免"亮 → 暗"闪屏 */
+  (function () {
+    try {
+      var saved = localStorage.getItem('chem-theme');
+      var dark = saved ? saved === 'dark'
+        : (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches);
+      document.documentElement.setAttribute('data-theme', dark ? 'dark' : 'light');
+    } catch (e) {
+      document.documentElement.setAttribute('data-theme', 'light');
+    }
+  })();
+</script>
 </head>
 <body>
 
@@ -222,9 +383,11 @@
   <h1>🧪 初中化学知识大全</h1>
   <span class="sub">知识梳理 · 计算方法 · 一键配平</span>
   <span class="spacer"></span>
+  <button id="themeBtn" class="theme-btn" title="切换暗色/浅色模式">🌙</button>
   <nav class="quick">
     <a href="#balance">一键配平</a>
     <a href="#calc-tools">计算工具</a>
+    <a href="#quiz">自测模式</a>
     <a href="#sec-10">记忆口诀</a>
   </nav>
 </header>
@@ -235,6 +398,8 @@
       <div class="nav-group-title">⚡ 实用工具</div>
       <a class="nav-link" href="#balance">⚖️ 一键配平方程式</a>
       <a class="nav-link" href="#calc-tools">🧮 计算工具（分子量/溶液）</a>
+      <a class="nav-link" href="#quiz">🎯 自测模式</a>
+      <a class="nav-link" href="#mistakes">📕 错题本<span class="nav-badge" id="mistake-count-badge" data-zero="1">0</span></a>
     </div>
     <div class="nav-group">
       <div class="nav-group-title">📚 知识梳理</div>
@@ -259,6 +424,7 @@
       <h2>初中化学知识大全</h2>
       <p>覆盖九年级化学全部核心考点：基本概念 · 身边的物质 · 化学方程式 · 化学计算 · 实验操作 · 记忆口诀。</p>
       <p>内置「一键配平」工具：输入任意化学方程式（支持括号、水合物、离子方程式），自动配平并逐元素校验守恒。</p>
+      <p>新增：🌙 <b>暗色模式</b>（右上角切换）· 🎯 <b>自测模式</b>（随机抽题）· 📕 <b>错题本</b>（自动记录做错的题，存在本地浏览器）。</p>
       <div class="stats">
         <div class="stat"><b>11</b> 大知识板块</div>
         <div class="stat"><b>50</b> 个常见方程式</div>
@@ -360,13 +526,51 @@
         <h3>④ 化学方程式质量计算（与一键配平联动）</h3>
         <p class="muted" id="stoich-status">正在载入默认方程式…</p>
         <div class="row">
-          <select id="stoich-select" style="padding:9px 12px;border:1px solid #cbd5e1;border-radius:9px;font-size:15px;font-family:Consolas,monospace;background:#fff"></select>
+          <select id="stoich-select" style="padding:9px 12px;border:1px solid var(--app-input-line);border-radius:9px;font-size:15px;font-family:Consolas,monospace;background:var(--app-input-bg);color:var(--ink)"></select>
           <input type="number" id="stoich-mass" style="width:130px" placeholder="已知质量(g)" value="6.3">
           <span class="muted">g</span>
           <button class="btn" id="btn-stoich">计算各物质质量</button>
         </div>
         <div id="stoich-output"></div>
         <div class="tip">原理：化学方程式中各物质的<b>质量比 = 化学计量数 × 相对分子质量</b> 之比，质量比一定，按比例求解。</div>
+      </div>
+    </section>
+
+    <!-- ================= 自测模式 ================= -->
+    <section id="quiz">
+      <h2 class="sec-title"><span class="num">工具</span>🎯 自测模式</h2>
+      <div class="card">
+        <div class="quiz-top">
+          <div>
+            <h3 style="margin-top:0">配平小测</h3>
+            <p class="muted">从常见方程式库中随机抽题（离子方程式除外）：判断哪个配平正确，或填写某个物质的系数。答错的题会自动收进「📕 错题本」。</p>
+          </div>
+          <div class="quiz-stats">
+            <span>已答 <b id="quiz-total">0</b></span>
+            <span>答对 <b id="quiz-right">0</b></span>
+            <span>正确率 <b id="quiz-rate">—</b></span>
+          </div>
+        </div>
+        <div id="quiz-body">
+          <div class="row"><button class="btn" id="quiz-start">▶ 开始自测（10 题）</button></div>
+          <p class="muted" style="font-size:13px;margin-top:8px">提示：系数为 1 时填 1；选择题有 4 个选项，只有一个是正确配平的。</p>
+        </div>
+        <div id="quiz-feedback"></div>
+      </div>
+    </section>
+
+    <!-- ================= 错题本 ================= -->
+    <section id="mistakes">
+      <h2 class="sec-title"><span class="num">工具</span>📕 错题本</h2>
+      <div class="card">
+        <div class="row" style="justify-content:space-between;align-items:center">
+          <p class="muted" style="margin:0;font-size:13.5px">错题保存在本机浏览器（localStorage），不上传服务器；换设备或清缓存会丢失。</p>
+          <div class="row">
+            <button class="btn btn-mini" id="mistake-practice">🔁 练习错题</button>
+            <button class="btn btn-mini btn-accent" id="mistake-clear">🗑 清空</button>
+          </div>
+        </div>
+        <div id="mistake-list"></div>
       </div>
     </section>
 
@@ -1501,6 +1705,84 @@ function speciesHTML(canonical) {
 function escapeHtml(t) {
   return String(t == null ? '' : t).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 }
+
+/* ===== 测验辅助：系数校验 / 方程式文本 / 选择题选项生成 ===== */
+
+/* 校验一组系数是否满足元素（与电荷）守恒 */
+function checkCoefficients(canonical, coeffs, leftCount) {
+  var parsed = canonical.map(function (c) { return parseSpecies(c); });
+  var elSet = new Set();
+  parsed.forEach(function (p) { p.counts.forEach(function (v, el) { elSet.add(el); }); });
+  if (parsed.some(function (p) { return p.charge !== 0n; })) elSet.add('e');
+  var els = Array.from(elSet);
+  var ok = true, leftVals = [], rightVals = [];
+  for (var k = 0; k < els.length; k++) {
+    var el = els[k], lv = 0n, rv = 0n;
+    for (var i = 0; i < canonical.length; i++) {
+      var v = el === 'e' ? parsed[i].charge : (parsed[i].counts.get(el) || 0n);
+      var c = BigInt(coeffs[i]);
+      if (i < leftCount) lv += c * v;
+      else rv += c * v;
+    }
+    if (lv !== rv) ok = false;
+    leftVals.push(lv);
+    rightVals.push(rv);
+  }
+  return { ok: ok, elements: els, leftVals: leftVals, rightVals: rightVals };
+}
+
+/* 方程式的纯文本形式，如 "2H2 + O2 = 2H2O"（系数可为 BigInt 或 Number） */
+function equationText(canonical, coeffs, leftCount) {
+  function side(start, end) {
+    var parts = [];
+    for (var i = start; i < end; i++) {
+      var c = coeffs[i];
+      var cs = (c === 1 || c === 1n) ? '' : String(c);
+      parts.push(cs + canonical[i]);
+    }
+    return parts.join(' + ');
+  }
+  return side(0, leftCount) + ' = ' + side(leftCount, canonical.length);
+}
+
+/* 生成一道配平选择题的选项：1 个正确 + 3 个不守恒的干扰项
+   rng 可注入（测试时用确定性随机数），返回 {options, answerIndex, correct} */
+function makeBalanceOptions(canonical, coeffs, leftCount, rng) {
+  var n = coeffs.length;
+  var correct = [];
+  for (var i = 0; i < n; i++) correct.push(Number(coeffs[i]));
+  var options = [correct];
+  var guard = 0;
+  while (options.length < 4 && guard < 500) {
+    guard++;
+    var clone = correct.slice();
+    var idx = Math.floor(rng() * n);
+    if (idx >= n) idx = n - 1;
+    clone[idx] += rng() < 0.5 ? 1 : -1;
+    if (clone[idx] < 1) continue;
+    var same = true;
+    for (var j = 0; j < n; j++) { if (clone[j] !== correct[j]) { same = false; break; } }
+    if (same) continue;
+    if (checkCoefficients(canonical, clone, leftCount).ok) continue;
+    var sig = clone.join(',');
+    var dup = false;
+    for (var k = 0; k < options.length; k++) { if (options[k].join(',') === sig) { dup = true; break; } }
+    if (dup) continue;
+    options.push(clone);
+  }
+  /* 打乱选项顺序 */
+  for (var m = options.length - 1; m > 0; m--) {
+    var q = Math.floor(rng() * (m + 1));
+    var t = options[m]; options[m] = options[q]; options[q] = t;
+  }
+  var answerIndex = -1;
+  for (var p = 0; p < options.length; p++) {
+    var isCorrect = true;
+    for (var r = 0; r < n; r++) { if (options[p][r] !== correct[r]) { isCorrect = false; break; } }
+    if (isCorrect) answerIndex = p;
+  }
+  return { options: options, answerIndex: answerIndex, correct: correct };
+}
 // ===CORE-END===
 </script>
 
@@ -1903,9 +2185,376 @@ function escapeHtml(t) {
   });
   backTop.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
 
-  /* ===== 初始化：默认演示 ===== */
+  /* ================= 暗色 / 浅色主题 ================= */
+  var THEME_KEY = 'chem-theme';
+  function themeNow() {
+    return document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
+  }
+  function refreshThemeBtn() {
+    var b = $('themeBtn');
+    if (!b) return;
+    var dark = themeNow() === 'dark';
+    b.textContent = dark ? '☀️' : '🌙';
+    b.title = dark ? '切换到浅色模式' : '切换到暗色模式';
+  }
+  $('themeBtn').addEventListener('click', function () {
+    var next = themeNow() === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', next);
+    try { localStorage.setItem(THEME_KEY, next); } catch (e) {}
+    refreshThemeBtn();
+  });
+  refreshThemeBtn();
+
+  /* ================= 本地存储与错题本 ================= */
+  var MISTAKE_KEY = 'chem-mistakes-v1';
+  var STORAGE_OK = (function () {
+    try {
+      localStorage.setItem('__chem_probe__', '1');
+      localStorage.removeItem('__chem_probe__');
+      return true;
+    } catch (e) { return false; }
+  })();
+  function loadMistakes() {
+    if (!STORAGE_OK) return [];
+    try {
+      var arr = JSON.parse(localStorage.getItem(MISTAKE_KEY) || '[]');
+      return Array.isArray(arr) ? arr : [];
+    } catch (e) { return []; }
+  }
+  function saveMistakes(list) {
+    if (!STORAGE_OK) return;
+    try { localStorage.setItem(MISTAKE_KEY, JSON.stringify(list)); } catch (e) {}
+  }
+  var mistakes = loadMistakes();
+
+  function timeStr(ts) {
+    var d = new Date(ts);
+    function p2(n) { return n < 10 ? '0' + n : '' + n; }
+    return (d.getMonth() + 1) + '月' + d.getDate() + '日 ' + p2(d.getHours()) + ':' + p2(d.getMinutes());
+  }
+
+  function renderMistakes() {
+    var badge = $('mistake-count-badge');
+    if (badge) {
+      badge.textContent = String(mistakes.length);
+      badge.setAttribute('data-zero', mistakes.length ? '0' : '1');
+    }
+    var box = $('mistake-list');
+    if (!box) return;
+    if (!STORAGE_OK) {
+      box.innerHTML = '<div class="empty-state">当前浏览器禁用了本地存储，错题无法保存。可检查隐私设置，或换用普通窗口（非无痕）打开。</div>';
+      return;
+    }
+    if (!mistakes.length) {
+      box.innerHTML = '<div class="empty-state">还没有错题。<br>去「🎯 自测模式」做几道题，答错的会自动收到这里。</div>';
+      return;
+    }
+    var html = '<p class="muted" style="font-size:13px">共 ' + mistakes.length + ' 道错题（仅保存在本机浏览器）</p>';
+    for (var i = 0; i < mistakes.length; i++) {
+      var m = mistakes[i];
+      var safeId = escapeHtml(m.id);
+      html += '<div class="mistake-item">' +
+        '<div class="mistake-head"><span class="mistake-name">' + escapeHtml(m.name || '方程式') + '</span>' +
+        '<span>错 ' + (m.count || 1) + ' 次</span><span>' + timeStr(m.time || Date.now()) + '</span></div>' +
+        '<div class="mistake-eq">' + escapeHtml(m.eq) + '</div>' +
+        '<div class="mistake-row">题目：' + escapeHtml(m.ask) + '</div>' +
+        '<div class="mistake-row">你的答案：<span class="bad">' + escapeHtml(m.user) + '</span>　正确答案：<span class="ok">' + escapeHtml(m.correct) + '</span></div>' +
+        '<div class="row" style="margin-top:8px">' +
+        '<button class="btn btn-mini mist-practice" data-id="' + safeId + '">🔁 再练这题</button>' +
+        '<button class="btn btn-mini btn-accent mist-del" data-id="' + safeId + '">删除</button>' +
+        '</div></div>';
+    }
+    box.innerHTML = html;
+  }
+
+  function addMistake(entry, question, userAnswer, correctAnswer) {
+    var found = null;
+    for (var i = 0; i < mistakes.length; i++) {
+      if (mistakes[i].eq === entry.eq && mistakes[i].ask === question.ask) { found = mistakes[i]; break; }
+    }
+    if (found) {
+      found.count = (found.count || 1) + 1;
+      found.time = Date.now();
+      found.user = userAnswer;
+      found.correct = correctAnswer;
+    } else {
+      mistakes.unshift({
+        id: 'm' + Date.now() + Math.floor(Math.random() * 1000),
+        name: entry.name,
+        eq: entry.eq,
+        ask: question.ask,
+        user: userAnswer,
+        correct: correctAnswer,
+        count: 1,
+        time: Date.now()
+      });
+    }
+    saveMistakes(mistakes);
+    renderMistakes();
+  }
+
+  /* ================= 自测模式 ================= */
+  var QUIZ_SIZE = 10;
+  var quizPool = [];
+  var quizQueue = [];
+  var quizCurrent = null;
+  var quizLocked = false;
+  var quizStat = { total: 0, right: 0 };
+
+  function eqHtmlOf(canonical, coeffs, leftCount) {
+    function side(start, end) {
+      var parts = [];
+      for (var i = start; i < end; i++) {
+        var c = coeffs[i];
+        var cs = (c === 1 || c === 1n) ? '' : '<span class="coef">' + c + '</span>';
+        parts.push(cs + speciesHTML(canonical[i]));
+      }
+      return parts.join(' <span class="plus">+</span> ');
+    }
+    return side(0, leftCount) + ' <span class="eqsign">=</span> ' + side(leftCount, canonical.length);
+  }
+
+  function buildQuizPool() {
+    quizPool = [];
+    for (var i = 0; i < EQUATION_BANK.length; i++) {
+      var item = EQUATION_BANK[i];
+      try {
+        var res = balanceEquation(item.eq);
+        if (res.labels.indexOf('电荷') !== -1) continue;   /* 离子方程式不出题 */
+        quizPool.push({ name: item.name, eq: item.eq, res: res });
+      } catch (e) { /* 无法配平的条目自动跳过 */ }
+    }
+  }
+
+  function entryFromEq(name, eq) {
+    try {
+      var res = balanceEquation(eq);
+      if (res.labels.indexOf('电荷') !== -1) return null;
+      return { name: name || '方程式', eq: eq, res: res };
+    } catch (e) { return null; }
+  }
+
+  function pickQuestion(entry) {
+    var res = entry.res;
+    var useChoice = res.coeffs.length >= 2 && Math.random() < 0.5;
+    if (useChoice) {
+      var mk = makeBalanceOptions(res.canonical, res.coeffs, res.leftCount, Math.random);
+      return {
+        kind: 'choice',
+        entry: entry,
+        res: res,
+        options: mk.options,
+        answerIndex: mk.answerIndex,
+        ask: '下列哪个是正确配平的化学方程式？',
+        selected: null
+      };
+    }
+    var idx = Math.floor(Math.random() * res.coeffs.length);
+    if (idx >= res.coeffs.length) idx = 0;
+    return {
+      kind: 'coef',
+      entry: entry,
+      res: res,
+      idx: idx,
+      species: res.canonical[idx],
+      ask: '配平后 ' + res.canonical[idx] + ' 前面的化学计量数（系数）是多少？',
+      answer: Number(res.coeffs[idx])
+    };
+  }
+
+  function updateQuizStats() {
+    if ($('quiz-total')) $('quiz-total').textContent = String(quizStat.total);
+    if ($('quiz-right')) $('quiz-right').textContent = String(quizStat.right);
+    if ($('quiz-rate')) {
+      $('quiz-rate').textContent = quizStat.total
+        ? Math.round(quizStat.right / quizStat.total * 100) + '%'
+        : '—';
+    }
+  }
+
+  function renderQuiz() {
+    var body = $('quiz-body');
+    $('quiz-feedback').innerHTML = '';
+    if (!quizQueue.length) {
+      quizCurrent = null;
+      body.innerHTML = '<div class="empty-state">本轮结束 🎉 上方是累计答题统计。<br>可以点下面按钮再来一轮。</div>' +
+        '<div class="row" style="justify-content:center"><button class="btn" id="quiz-restart">▶ 再来一轮（10 题）</button></div>';
+      return;
+    }
+    var q = pickQuestion(quizQueue[0]);
+    quizCurrent = q;
+    quizLocked = false;
+    var html = '<div class="quiz-question">' +
+      '<div class="quiz-type">' + (q.kind === 'coef' ? '① 系数填空' : '② 配平判断') +
+      ' ｜ ' + escapeHtml(q.entry.name) + ' ｜ 剩余 ' + quizQueue.length + ' 题</div>' +
+      '<div class="quiz-eq">' + escapeHtml(q.entry.eq) + '</div>' +
+      '<div class="quiz-ask">' + escapeHtml(q.ask) + '</div>';
+    if (q.kind === 'coef') {
+      html += '<div class="row" style="margin-top:10px">' +
+        '<input type="number" id="quiz-ans" class="quiz-coef-input" min="1" step="1" placeholder="填数字">' +
+        '<button class="btn" id="quiz-submit">提交</button></div>';
+    } else {
+      html += '<div class="quiz-opts" id="quiz-opts">';
+      for (var i = 0; i < q.options.length; i++) {
+        html += '<button class="quiz-opt" data-idx="' + i + '">' + eqHtmlOf(q.res.canonical, q.options[i], q.res.leftCount) + '</button>';
+      }
+      html += '</div><div class="row"><button class="btn" id="quiz-submit">提交</button></div>';
+    }
+    html += '</div>';
+    body.innerHTML = html;
+  }
+
+  function selectQuizOption(idx, el) {
+    if (!quizCurrent || quizCurrent.kind !== 'choice' || quizLocked) return;
+    quizCurrent.selected = idx;
+    var opts = document.querySelectorAll('#quiz-opts .quiz-opt');
+    for (var i = 0; i < opts.length; i++) {
+      var mine = Number(opts[i].getAttribute('data-idx')) === idx;
+      opts[i].classList.toggle('picked', mine);
+    }
+  }
+
+  function gradeQuiz() {
+    if (!quizCurrent || quizLocked) return;
+    var q = quizCurrent;
+    var ok = false, userText = '';
+    if (q.kind === 'coef') {
+      var raw = $('quiz-ans').value.trim();
+      if (raw === '') { $('quiz-ans').focus(); return; }
+      var num = Number(raw);
+      if (!isFinite(num) || num !== Math.floor(num)) {
+        $('quiz-feedback').innerHTML = '<div class="feedback bad-fb">请填写一个整数。</div>';
+        return;
+      }
+      ok = num === q.answer;
+      userText = raw;
+      $('quiz-ans').disabled = true;
+    } else {
+      if (q.selected == null) {
+        $('quiz-feedback').innerHTML = '<div class="feedback bad-fb">请先选择一个选项。</div>';
+        return;
+      }
+      ok = q.selected === q.answerIndex;
+      userText = String.fromCharCode(65 + q.selected) + '. ' + equationText(q.res.canonical, q.options[q.selected], q.res.leftCount);
+      var opts = document.querySelectorAll('#quiz-opts .quiz-opt');
+      for (var i = 0; i < opts.length; i++) {
+        opts[i].disabled = true;
+        var idx = Number(opts[i].getAttribute('data-idx'));
+        if (idx === q.answerIndex) opts[i].classList.add('correct');
+        else if (idx === q.selected) opts[i].classList.add('wrong');
+      }
+    }
+    quizLocked = true;
+    quizStat.total++;
+    if (ok) quizStat.right++;
+    updateQuizStats();
+    var correctText = q.kind === 'coef'
+      ? String(q.answer)
+      : equationText(q.res.canonical, q.res.coeffs, q.res.leftCount);
+    var fb = $('quiz-feedback');
+    if (ok) {
+      fb.innerHTML = '<div class="feedback ok-fb">✅ 答对了！' +
+        '<div class="ans">' + eqHtmlOf(q.res.canonical, q.res.coeffs, q.res.leftCount) + '</div></div>' +
+        '<div class="row"><button class="btn" id="quiz-next">下一题 →</button></div>';
+    } else {
+      fb.innerHTML = '<div class="feedback bad-fb">❌ 答错了，正确答案是 <b>' + escapeHtml(correctText) + '</b>' +
+        '<div class="ans">' + eqHtmlOf(q.res.canonical, q.res.coeffs, q.res.leftCount) + '</div>' +
+        '<div style="font-size:13px;margin-top:6px">已自动加入「📕 错题本」，可以稍后复习。</div></div>' +
+        '<div class="row"><button class="btn" id="quiz-next">下一题 →</button></div>';
+      addMistake(q.entry, q, userText, correctText);
+    }
+  }
+
+  function nextQuiz() {
+    quizQueue.shift();
+    renderQuiz();
+  }
+
+  function shuffleArr(arr) {
+    for (var i = arr.length - 1; i > 0; i--) {
+      var j = Math.floor(Math.random() * (i + 1));
+      var t = arr[i]; arr[i] = arr[j]; arr[j] = t;
+    }
+    return arr;
+  }
+
+  function startQuiz(list) {
+    var pool = (list && list.length ? list : quizPool).slice();
+    if (!pool.length) return;
+    shuffleArr(pool);
+    quizQueue = pool.slice(0, QUIZ_SIZE);
+    renderQuiz();
+    var sec = document.getElementById('quiz');
+    if (sec && sec.scrollIntoView) sec.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  $('quiz').addEventListener('click', function (e) {
+    var t = e.target;
+    var opt = t.closest ? t.closest('.quiz-opt') : null;
+    if (opt && !opt.disabled) { selectQuizOption(Number(opt.getAttribute('data-idx')), opt); return; }
+    var btn = t.closest ? t.closest('button') : null;
+    if (!btn) return;
+    if (btn.id === 'quiz-submit') gradeQuiz();
+    else if (btn.id === 'quiz-next') nextQuiz();
+    else if (btn.id === 'quiz-start' || btn.id === 'quiz-restart') startQuiz(quizPool);
+  });
+  $('quiz').addEventListener('keydown', function (e) {
+    if (e.key === 'Enter' && e.target && e.target.id === 'quiz-ans' && !quizLocked) {
+      e.preventDefault();
+      gradeQuiz();
+    }
+  });
+
+  /* ================= 错题本操作 ================= */
+  $('mistake-list').addEventListener('click', function (e) {
+    var t = e.target;
+    var del = t.closest ? t.closest('.mist-del') : null;
+    if (del) {
+      var id = del.getAttribute('data-id');
+      mistakes = mistakes.filter(function (m) { return m.id !== id; });
+      saveMistakes(mistakes);
+      renderMistakes();
+      return;
+    }
+    var pr = t.closest ? t.closest('.mist-practice') : null;
+    if (pr) {
+      var id2 = pr.getAttribute('data-id');
+      var target = null;
+      for (var i = 0; i < mistakes.length; i++) { if (mistakes[i].id === id2) target = mistakes[i]; }
+      if (!target) return;
+      var en = entryFromEq(target.name, target.eq);
+      if (en) startQuiz([en]);
+    }
+  });
+
+  $('mistake-clear').addEventListener('click', function () {
+    if (!mistakes.length) return;
+    if (window.confirm('确定清空全部 ' + mistakes.length + ' 道错题吗？此操作不可撤销。')) {
+      mistakes = [];
+      saveMistakes(mistakes);
+      renderMistakes();
+    }
+  });
+
+  $('mistake-practice').addEventListener('click', function () {
+    if (!mistakes.length) {
+      $('mistake-list').innerHTML = '<div class="empty-state">还没有错题，先去「🎯 自测模式」做几道吧。</div>';
+      return;
+    }
+    var list = [];
+    for (var i = 0; i < mistakes.length && list.length < QUIZ_SIZE; i++) {
+      var en = entryFromEq(mistakes[i].name, mistakes[i].eq);
+      if (en) list.push(en);
+    }
+    startQuiz(list);
+  });
+
+  /* ===== 初始化 ===== */
   doBalance($('eq-input').value);
   runMw();
+  buildQuizPool();
+  renderMistakes();
+  updateQuizStats();
 })();
 </script>
 </body>

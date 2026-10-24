@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="初中化学知识大全">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#115e59"/>
+      <stop offset="1" stop-color="#14b8a6"/>
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="14" fill="url(#g)"/>
+  <path d="M25.3 9.8H38.7V25L50.6 52A2.4 2.4 0 0 1 48.2 54.4H15.8A2.4 2.4 0 0 1 13.4 52L25.3 25Z" fill="#fff"/>
+  <rect x="24.1" y="9.4" width="15.8" height="1.9" rx=".9" fill="#fff"/>
+  <path d="M21.5 36.6H42.5L48.4 51.2A2.9 2.9 0 0 1 45.5 54.1H18.5A2.9 2.9 0 0 1 15.6 51.2Z" fill="#0f766e"/>
+  <circle cx="23.4" cy="40.9" r="2.1" fill="#fff"/>
+  <circle cx="38.6" cy="44.7" r="1.45" fill="#fff"/>
+</svg>

@@ -16,8 +16,7 @@
 直接用浏览器打开 `index.html` 即可。页面为纯静态单文件，所有样式与脚本内联，不请求任何外部资源。
 
 ## 🌐 在线访问
-
-https://你的用户名.github.io/仓库名/
+https://github.com/yyuu-111/chem-notes
 
 （通过 GitHub Pages 部署，见仓库 Settings → Pages）
 
